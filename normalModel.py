@@ -103,7 +103,7 @@ def Q_corner(state, graph):
     global Pool
     Q = {}  
     GREED = 0.3
-    EPISODE = 30
+    EPISODE = 500
     greed_add = (0.9 - GREED) / EPISODE
     if(Pool.get(state, 0) != 0):
         return Pool[state]
@@ -131,7 +131,7 @@ def Q_up(state, graph, feedback_temp, Answers_size):
     global Nodes
     Q = {}  
     GREED = 0.3
-    EPISODE = 5
+    EPISODE = 200
     greed_add = (0.9 - GREED) / EPISODE 
     time = 0
     Q_plt = []
@@ -192,7 +192,7 @@ Connect = []
 def input_data():
     global Edge
     global Outline
-    txt = open('data/data83378/out_point_5%.txt')
+    txt = open('data/data83378/out_point_bunnyr.txt')
     line = txt.readline().split('\n')[0].split(' ')
     while(True):
         temp = []
@@ -206,7 +206,7 @@ def input_data():
             break
     txt.close()
 
-    txt = open('data/data83378/graph_point_5%.txt')
+    txt = open('data/data83378/graph_point_bunnyr.txt')
     line = txt.readline().split('\n')[0].split(' ')
     while(True):
         G = []
@@ -235,7 +235,7 @@ def input_data():
             break
     txt.close()
 
-    txt = open('data/data83378/connect_model_5%.txt')
+    txt = open('data/data83378/connect_model_bunnyr.txt')
     line = txt.readline().split('\n')[0].split(' ')
     while(line != ['']):
         temp = []
@@ -621,7 +621,7 @@ Plane = {}
 Outline_order = []
 input_data()
 Start = [[96, 20], 0]  #点坐标，点序号
-for i in range(482):
+for i in range(585):
     print("当前是第",i,"层")
     if(Edge[i][0] != 0):
         Bt = {}
