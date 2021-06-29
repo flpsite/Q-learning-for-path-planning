@@ -66,7 +66,7 @@ class Printer:
         temp = (math.pow(v_1[0], 2) + math.pow(v_1[1], 2)) * (math.pow(v_2[0], 2) + math.pow(v_2[1], 2))
         #theta = math.acos((v_1[0] * v_2[0] + v_1[1] * v_2[1]) / math.pow(temp, 0.5))
         cos = (v_1[0] * v_2[0] + v_1[1] * v_2[1]) / math.pow(temp, 0.5)
-        feedback_corner = cos * 1
+        feedback_corner = cos * 10
         if(flag_temp == "corner"):
             return feedback_corner
         else:
@@ -149,7 +149,7 @@ def Q_up(state, graph, feedback_temp, Answers_size):
     global Nodes
     Q = {}  
     GREED = 0.3
-    EPISODE = 500
+    EPISODE = 100
     greed_add = (0.9 - GREED) / EPISODE 
     time = 0
     Q_plt = []
@@ -164,7 +164,7 @@ def Q_up(state, graph, feedback_temp, Answers_size):
                     GREED = 1.0
                 break
             jum.select_action(Q, GREED)
-            temp = Q_corner(jum.state + (jum.action,), jum.g, 1000)
+            temp = Q_corner(jum.state + (jum.action,), jum.g, 200)
             if(Q.get(jum.state, 0) == 0):
                 Q[jum.state] = {}
             Q[jum.state][jum.action] = jum.feedback("up")+ temp[1] + jum.Qmax(Q, temp[0])
